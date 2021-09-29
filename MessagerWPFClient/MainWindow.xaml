@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MessagerWPFClient"
+        xmlns:models="clr-namespace:MessagerWPFClient.Models"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
@@ -16,10 +17,16 @@
                 <RowDefinition/>
                 <RowDefinition Height="100"/>
             </Grid.RowDefinitions>
-            <WrapPanel x:Name="PrintMessageWrapPanel" Grid.Row="0" Background="Aqua">
-
-            </WrapPanel>
-            <TextBox x:Name="WriteMessageTextBox" Grid.Row="1"/>
+            <StackPanel x:Name="PrintMessageWrapPanel" Grid.Row="0" Background="#FFC2D4D4">
+            </StackPanel>
+            <Grid Grid.Row="1" Margin="1,1,1,1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="500"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="WriteMessageTextBox" Grid.Column="0" TextWrapping="Wrap"/>
+                <Button x:Name="SendMessageButton" Grid.Row="1" Content="Button" Height="30" Grid.Column="1" Click="SendMessageButton_Click" Margin="1,1,1,1"/>
+            </Grid>
         </Grid>
         
     </Grid>

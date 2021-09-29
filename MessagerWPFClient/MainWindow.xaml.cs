@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MessagerWPFClient.Models;
+using Microsoft.AspNetCore.SignalR.Client;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,39 @@ namespace MessagerWPFClient
     /// </summary>
     public partial class MainWindow : Window
     {
+        private MessagerClient _messagerClient;
         public MainWindow()
         {
             InitializeComponent();
+
+
+
+            Connect();
+        }
+
+        private async void SendMessageButton_Click(object sender, RoutedEventArgs e)
+        {
+            string message = WriteMessageTextBox.Text;
+            if(!string.IsNullOrEmpty(message))
+            {
+                await _messagerClient.Send(message);
+                PrintMessage(message, MessageTypes.Output);
+                WriteMessageTextBox.Text = string.Empty;
+            }
+        }
+
+        private void Connect()
+        {
+            _messagerClient = new MessagerClient("http://localhost:5000/MessengerHub");
+            _messagerClient.HubConnection.StartAsync();
+
+            _messagerClient.HubConnection.On<string>(ActionName.Send.ToString(), m => PrintMessage(m, MessageTypes.Input));
+        }
+
+        private void PrintMessage(string message, MessageTypes messageTypes)
+        {
+            MessageBlock messageBox = new MessageBlock(message, messageTypes);
+            PrintMessageWrapPanel.Children.Add(messageBox);
         }
     }
 }
