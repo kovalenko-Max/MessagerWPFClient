@@ -1,4 +1,5 @@
-﻿using MessagerWPFClient.Models;
+﻿using MessagerWPFClient.Autorization;
+using MessagerWPFClient.Models;
 using Microsoft.AspNetCore.SignalR.Client;
 using System;
 using System.Collections.Generic;
@@ -27,7 +28,8 @@ namespace MessagerWPFClient
         {
             InitializeComponent();
 
-
+            AutorizationWindow autorizationWindow = new AutorizationWindow();
+            autorizationWindow.ShowDialog();
 
             Connect();
         }

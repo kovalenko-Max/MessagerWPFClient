@@ -1,0 +1,20 @@
+﻿<Page x:Class="MessagerWPFClient.Autorization.SignInPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MessagerWPFClient.Autorization"
+      mc:Ignorable="d" 
+      d:DesignHeight="135.714" d:DesignWidth="359.524"
+      Title="SignInPage">
+
+    <Grid>
+        <StackPanel>
+            <TextBlock Text="Login"/>
+            <TextBox x:Name="loginTexBox" Height="30"/>
+            <TextBlock Text="Passord"/>
+            <PasswordBox x:Name="LogInPasswordBox" Height="30"/>
+            <Button x:Name="SignInButton" Content="Sign in"/>            
+        </StackPanel>
+    </Grid>
+</Page>
